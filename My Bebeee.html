@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bebe, Jelaica ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat,sans-serif;color:white;background:#080308;overflow-x:hidden}
+
+body:before{
+ content:"";position:fixed;inset:0;z-index:-10;
+ background:radial-gradient(circle at 20% 20%,#651a3c,transparent 35%),
+            radial-gradient(circle at 80% 75%,#3b1230,transparent 35%),
+            linear-gradient(135deg,#080207,#1b0712,#080207);
+}
+
+.stars{position:fixed;inset:0;z-index:-5;pointer-events:none}
+.star{position:absolute;width:3px;height:3px;background:white;border-radius:50%;animation:twinkle 3s infinite}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.5)}}
+
+.hearts span{position:fixed;bottom:-40px;color:#ff729d;font-size:22px;animation:float 10s linear infinite;pointer-events:none;z-index:-2}
+.hearts span:nth-child(1){left:10%}.hearts span:nth-child(2){left:25%;animation-delay:3s}.hearts span:nth-child(3){left:45%;animation-delay:5s}.hearts span:nth-child(4){left:65%;animation-delay:1s}.hearts span:nth-child(5){left:82%;animation-delay:4s}
+@keyframes float{0%{transform:translateY(0);opacity:0}20%{opacity:.7}100%{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+
+.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:30px}
+.hero-content{animation:appear 1.8s ease}
+@keyframes appear{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.small{letter-spacing:6px;text-transform:uppercase;color:#ffabc5;font-size:12px}
+.heart{display:inline-block;margin:25px;font-size:80px;filter:drop-shadow(0 0 25px #ff477f);animation:beat 1.5s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.18)}40%{transform:scale(1)}60%{transform:scale(1.1)}}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(70px,14vw,150px);font-weight:normal;line-height:.9;background:linear-gradient(90deg,#fff,#ff8faf,#fff,#ff8faf);background-size:300%;-webkit-background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:300%}}
+.hero p{max-width:600px;margin:30px auto;color:#dacbd1;line-height:1.9;font-weight:300}
+.scroll{margin-top:60px;color:#a88d99;font-size:11px;letter-spacing:4px;animation:bounce 2s infinite}
+@keyframes bounce{50%{transform:translateY(10px)}}
+
+section{padding:110px 20px;text-align:center}
+.title{font-family:'DM Serif Display',serif;font-size:52px;font-weight:normal}
+.subtitle{color:#aa929c;margin:10px 0 45px}
+
+.card{max-width:720px;margin:auto;padding:50px 40px;border-radius:30px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(15px);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.card p{line-height:2;color:#eadfe3}
+.signature{margin-top:25px;color:#ff9fbb;font-family:'DM Serif Display',serif;font-size:28px}
+button{margin-top:30px;padding:14px 28px;border:0;border-radius:50px;background:#e75480;color:white;cursor:pointer;font-family:inherit;transition:.3s}
+button:hover{transform:scale(1.07);box-shadow:0 10px 35px rgba(231,84,128,.4)}
+#secret{display:none;margin-top:25px;color:#ff9fbb}
+
+/* PHOTO SECTION */
+.slideshow{
+ position:relative;width:min(900px,94vw);height:min(650px,72vh);
+ margin:0 auto;display:flex;justify-content:center;align-items:center;
+ border-radius:34px;overflow:hidden;
+ box-shadow:0 30px 100px rgba(0,0,0,.55);
+}
+
+.slide-bg{
+ position:absolute;inset:-35px;
+ background-image:var(--photo);
+ background-size:cover;background-position:center;
+ filter:blur(25px) brightness(.38) saturate(1.25);
+ transform:scale(1.12);
+ transition:background-image .6s ease,opacity .5s ease;
+}
+
+.slide-bg:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(135deg,rgba(255,80,140,.18),rgba(0,0,0,.35));
+}
+
+.slide{
+ position:absolute;inset:0;display:flex;justify-content:center;align-items:center;
+ opacity:0;transform:scale(.88) rotate(-2deg);
+ pointer-events:none;
+ transition:opacity .65s ease,transform .75s cubic-bezier(.2,.8,.2,1);
+ z-index:2;
+}
+.slide.active{opacity:1;transform:scale(1) rotate(0);pointer-events:auto}
+.slide img{
+ max-width:84%;max-height:88%;width:auto;height:auto;object-fit:contain;
+ border-radius:22px;border:3px solid rgba(255,255,255,.18);
+ box-shadow:0 25px 70px rgba(0,0,0,.7);
+ cursor:pointer;
+ transition:transform .5s ease,box-shadow .5s ease;
+}
+.slide.active img:hover{transform:scale(1.025);box-shadow:0 30px 90px rgba(0,0,0,.8)}
+
+.slide.enter-right{transform:translateX(100px) scale(.9)}
+.slide.enter-left{transform:translateX(-100px) scale(.9)}
+
+.arrow{
+ position:absolute;top:50%;transform:translateY(-50%);
+ width:60px;height:60px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
+ background:rgba(15,4,12,.65);backdrop-filter:blur(12px);
+ color:white;font-size:34px;display:flex;justify-content:center;align-items:center;
+ cursor:pointer;z-index:10;transition:.3s;margin:0;padding:0
+}
+.arrow:hover{background:#e75480;transform:translateY(-50%) scale(1.12);box-shadow:0 0 25px rgba(231,84,128,.5)}
+.prev{left:18px}.next{right:18px}
+
+.photo-counter{margin-top:25px;color:#d0b9c2;font-size:13px;letter-spacing:2px}
+.dots{display:flex;justify-content:center;gap:9px;margin-top:18px}
+.dot{width:9px;height:9px;border-radius:50%;background:#67404e;cursor:pointer;transition:.3s}
+.dot.active{background:#ff729d;transform:scale(1.4);box-shadow:0 0 12px rgba(255,114,157,.6)}
+.hint{margin-top:18px;color:#8f7a84;font-size:12px}
+
+footer{padding:70px 20px;text-align:center;color:#806d76;border-top:1px solid rgba(255,255,255,.08)}
+.footer-heart{display:inline-block;color:#ff729d;font-size:30px;animation:beat 1.5s infinite}
+.reveal{opacity:0;transform:translateY(50px);transition:1s}.reveal.show{opacity:1;transform:translateY(0)}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:100;justify-content:center;align-items:center;padding:25px}
+.modal img{max-width:92%;max-height:85vh;border-radius:20px}
+.close{position:absolute;top:20px;right:30px;font-size:42px;cursor:pointer}
+
+@media(max-width:650px){
+ .title{font-size:40px}.card{padding:35px 22px}.slideshow{height:60vh}
+ .slide img{max-width:78%;max-height:84%}.arrow{width:48px;height:48px;font-size:25px}
+ .prev{left:8px}.next{right:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="hearts"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+
+<header class="hero">
+ <div class="hero-content">
+  <div class="small">A little gift for the person I love</div>
+  <div class="heart">♡</div>
+  <h1>My Bebe</h1>
+  <p>I made this little website just for you,
+so I could keep some of our favorite memories
+in one special place. ♡</p>
+  <div class="scroll">↓ SCROLL TO DISCOVER ↓</div>
+ </div>
+</header>
+
+<section class="reveal">
+ <h2 class="title">A Letter For You</h2>
+ <div class="subtitle">Words from my heart ♡</div>
+ <div class="card">
+  <p>
+   Dear Bebeeee,<br><br>
+  I made this little website especially for you because I wanted to
+create something meaningful—something that could hold the
+memories we have shared and the feelings that are difficult to
+express with only a few words.
+   <br><br>
+   Every photograph here carries a memory that I treasure. They
+remind me of the laughter, conversations, simple moments, and
+little things that have made our time together meaningful.
+   <br><br>
+   You have become someone very special to me. I deeply appreciate
+your presence in my life, and I am grateful for every moment we
+have shared. There is something beautiful about having someone
+who can make ordinary moments feel worth remembering.
+   <br><br>
+  I may not always find the perfect words to express what I feel,
+but I hope you can see through this small creation how much I
+cherish you. My feelings for you are sincere, and I value not only
+the beautiful moments we have had, but also the memories we have
+yet to create.
+<br><br>
+Thank you for always bringing happiness into my life and for
+making even the simplest moments feel special. I truly appreciate
+your presence, your kindness, and all the little things you do that
+make me smile. I am grateful for every memory we have created
+together, and I look forward to all the beautiful moments we may
+still share in the future.
+<br><br>
+
+  </p>
+  <div class="signature">— Always, Anghel ♡</div>
+  <button onclick="document.getElementById('secret').style.display='block'">Click Here, Bebeee ♡</button>
+  <p id="secret">I hope we continue making beautiful memories together.Mahal kita palagi Bebee ♡</p>
+ </div>
+</section>
+
+<section class="reveal">
+ <h2 class="title">Our Little Memories</h2>
+ <div class="subtitle">Every picture tells a little part of our story ♡</div>
+
+ <div class="slideshow">
+  <div class="slide-bg" id="slideBg"></div>
+
+  <div class="slide active"><img src="photos/photo1.png" alt="Memory 1"></div>
+  <div class="slide"><img src="photos/photo2.png" alt="Memory 2"></div>
+  <div class="slide"><img src="photos/photo3.png" alt="Memory 3"></div>
+  <div class="slide"><img src="photos/photo4.png" alt="Memory 4"></div>
+  <div class="slide"><img src="photos/photo5.png" alt="Memory 5"></div>
+  <div class="slide"><img src="photos/photo6.png" alt="Memory 6"></div>
+  <div class="slide"><img src="photos/photo7.png" alt="Memory 7"></div>
+
+  <button class="arrow prev" onclick="changeSlide(-1)">‹</button>
+  <button class="arrow next" onclick="changeSlide(1)">›</button>
+ </div>
+
+ <div class="photo-counter" id="counter">1 / 7</div>
+ <div class="dots" id="dots"></div>
+ <div class="hint">Click the arrows • or use ← → on your keyboard</div>
+</section>
+
+<footer>
+ <div class="footer-heart">♡</div><br>
+ Made with love, especially for Jelaica ♡<br><br>© 2026
+</footer>
+
+<div class="modal" id="modal">
+ <div class="close" onclick="closeModal()">×</div>
+ <img id="largeImage">
+</div>
+
+<script>
+const stars=document.getElementById("stars");
+for(let i=0;i<100;i++){
+ const star=document.createElement("div");star.className="star";
+ star.style.left=Math.random()*100+"%";star.style.top=Math.random()*100+"%";
+ star.style.animationDelay=Math.random()*3+"s";stars.appendChild(star);
+}
+
+const slides=document.querySelectorAll(".slide");
+const dotsContainer=document.getElementById("dots");
+const counter=document.getElementById("counter");
+const slideBg=document.getElementById("slideBg");
+let current=0,autoPlay;
+
+slides.forEach((slide,index)=>{
+ const dot=document.createElement("div");
+ dot.className="dot"+(index===0?" active":"");
+ dot.onclick=()=>showSlide(index);
+ dotsContainer.appendChild(dot);
+});
+const dots=document.querySelectorAll(".dot");
+
+function setBackground(index){
+ const img=slides[index].querySelector("img");
+ slideBg.style.opacity="0";
+ setTimeout(()=>{
+  slideBg.style.backgroundImage=`url("${img.src}")`;
+  slideBg.style.opacity="1";
+ },180);
+}
+
+function showSlide(index,direction=1){
+ if(index<0)index=slides.length-1;
+ if(index>=slides.length)index=0;
+
+ slides[current].classList.remove("active");
+ dots[current].classList.remove("active");
+
+ current=index;
+ slides[current].classList.remove("enter-left","enter-right");
+ slides[current].classList.add(direction>0?"enter-right":"enter-left");
+
+ requestAnimationFrame(()=>{
+  slides[current].classList.add("active");
+  slides[current].classList.remove("enter-left","enter-right");
+ });
+
+ dots[current].classList.add("active");
+ counter.textContent=(current+1)+" / "+slides.length;
+ setBackground(current);
+}
+
+function changeSlide(direction){
+ showSlide(current+direction,direction);
+ restartAutoPlay();
+}
+
+function startAutoPlay(){autoPlay=setInterval(()=>showSlide(current+1,1),5000)}
+function restartAutoPlay(){clearInterval(autoPlay);startAutoPlay()}
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="ArrowRight")changeSlide(1);
+ if(e.key==="ArrowLeft")changeSlide(-1);
+});
+
+document.querySelectorAll(".slide img").forEach(img=>{
+ img.addEventListener("click",()=>{
+  document.getElementById("largeImage").src=img.src;
+  document.getElementById("modal").style.display="flex";
+ });
+});
+
+function closeModal(){document.getElementById("modal").style.display="none"}
+
+setBackground(0);
+startAutoPlay();
+
+const reveal=document.querySelectorAll(".reveal");
+function revealOnScroll(){
+ reveal.forEach(item=>{
+  if(item.getBoundingClientRect().top<window.innerHeight-100)item.classList.add("show");
+ });
+}
+window.addEventListener("scroll",revealOnScroll);
+revealOnScroll();
+</script>
+</body>
+</html>
