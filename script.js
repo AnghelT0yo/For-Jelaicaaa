@@ -1,6 +1,11 @@
 const photos = [
-  "images/photo1.jpg","images/photo2.jpg","images/photo3.jpg",
-  "images/photo4.jpg","images/photo5.jpg","images/photo6.jpg","images/photo7.jpg"
+  "photo1.png",
+  "photo2.png",
+  "photo3.png",
+  "photo4.png",
+  "photo5.png",
+  "photo6.png",
+  "photo7.png"
 ];
 
 let current = 0;
